@@ -3,5 +3,7 @@ title: Welcome to Middleman
 ---
 
 div ng-app="indiegogoCampaigns" ng-controller="mainController"
+  .row: .small-12.columns
+    input type="text"
   div ng-repeat="campaign in campaigns"
-    | hello
+    | {{ campaign }}
