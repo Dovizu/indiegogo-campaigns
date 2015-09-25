@@ -1,8 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,900);
 @import "foundation_and_overrides";
+@import "Hover";
 
 body {
+
+  input[type="search"] {
+    border-radius: 5px;
+  }
+
   .app-wrapper {
+    margin-top: 20px;
     .campaigns {
       justify-content: center;
       display: flex;
@@ -14,11 +21,23 @@ body {
         margin: 10px;
         border-radius: 5px;
         background-color: #f2f2f2;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         .thumbnail {
           border-radius: 5px 5px 0 0;
         }
         .quick-info {
+          position: relative;
           padding: 10px;
+          .pricing {
+            color: #333333;
+            font-size: small;
+          }
+        }
+        // Customize hover.css effect
+        &.hvr-grow {
+          &:hover, &:focus, &:active {
+            transform: scale(1.03);
+          }
         }
       }
     }
