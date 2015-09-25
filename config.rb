@@ -1,3 +1,11 @@
+require 'rake/file_list'
+require 'pathname'
+require 'lib/navigation_helpers'
+
+###
+# Load Helpers
+###
+
 ###
 # Compass
 ###
@@ -35,10 +43,19 @@
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
+# Ignore Jetbrains files
+config[:file_watcher_ignore] += [
+    /.iml/,
+    /.idea\//,
+    /.ipr/,
+    /.iws/,
+    /.bowerrc/
+]
+
 # Reload the browser automatically whenever files change
-# configure :development do
-#   activate :livereload
-# end
+configure :development do
+  activate :livereload
+end
 
 # Methods defined in the helpers block are available in templates
 # helpers do
@@ -47,26 +64,62 @@
 #   end
 # end
 
-set :css_dir, 'stylesheets'
+set :css_dir, 'assets/stylesheets'
+set :js_dir, 'assets/javascripts'
+set :images_dir, 'assets/images'
+sprockets.append_path File.join root, 'assets/fonts'
+activate :directory_indexes
 
-set :js_dir, 'javascripts'
+###
+# Bower
+###
 
-set :images_dir, 'images'
+bower_directory = 'vendor/bower_components'
+# Add Bower components to Sprocket
+sprockets.append_path File.join root, bower_directory
+# # Build search patterns
+# patterns = [
+#     '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+#     '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+#     '.js',                                    # Javascript
+# ].map { |e| File.join(bower_directory, "**", "*#{e}" ) }
+# Rake::FileList.new(*patterns) do |l|
+#   l.exclude(/src/)
+#   l.exclude(/test/)
+#   l.exclude(/demo/)
+#   l.exclude { |f| !File.file? f }
+# end.each do |f|
+#   # Import relative paths
+#   sprockets.import_asset(Pathname.new(f).relative_path_from(Pathname.new(bower_directory)))
+# end
 
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 
   # Enable cache buster
-  # activate :asset_hash
+  activate :asset_hash
 
   # Use relative URLs
   # activate :relative_assets
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+end
+
+###
+# Deployment
+###
+
+activate :deploy do |deploy|
+  deploy.method = :git
+  # Optional Settings
+  # deploy.remote   = 'custom-remote' # remote name or git url, default: origin
+  deploy.branch   = 'gh-pages' # default: gh-pages
+  # deploy.strategy = :submodule      # commit strategy: can be :force_push or :submodule, default: :force_push
+  # deploy.commit_message = 'custom-message'      # commit message (can be empty), default: Automated commit at `timestamp` by middleman-deploy `version`
 end
