@@ -4,14 +4,16 @@ title: Indiegogo Campaigns
 
 div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
   .row: .small-12.columns.text-center
-    h1 Indiegogo Campaigns
+    h3: b INDIEGOGO CAMPAIGNS
   .row: .small-12.medium-6.medium-centered.columns
     input type="search" ng-model="searchText" placeholder="Search..."
   .row: .small-12.columns
     .campaigns
-      a.campaign-card.hvr-grow ng-repeat="campaign in campaigns | filter:searchFilter" href="{{ campaign.web_url }}"
+      a.campaign-card.hvr-grow ng-repeat="campaign in campaigns | filter:searchFilter" href="{{ campaign.web_url }}" target="_blank"
         img.thumbnail src="{{ campaign.baseball_card_image_url }}"
         .quick-info
           span.pricing = '{{ campaign.collected_funds | currency:"$":0 }}/{{ campaign.goal | currency:"$":0 }} Raised'
-          h5 = '{{ campaign.title }}'
+          h6: b = '{{ campaign.title }}'
           p = '{{ campaign.tagline }}'
+  .row: .small-12.columns.text-center
+    small Made with ♥ by Donny Reynolds
