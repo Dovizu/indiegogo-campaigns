@@ -1,0 +1,21 @@
+{
+  "name": "indiegogo-app",
+  "version": "0.0.0",
+  "authors": [
+    "Donny Reynolds <donnywith@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flux": "~2.1.1",
+    "react": "~0.13.3",
+    "foundation": "~5.5.2",
+    "jquery": "~2.1.4"
+  }
+}
