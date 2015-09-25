@@ -19,6 +19,7 @@ angular.module('indiegogoCampaigns', [])
         function getCampaigns() {
             campaignFactory.getAllCampaigns()
                 .success(function(campaigns) {
+                    console.log(campaigns);
                     $scope.campaigns = campaigns.response;
                 });
         }

@@ -2,8 +2,11 @@
 title: Welcome to Middleman
 ---
 
-div ng-app="indiegogoCampaigns" ng-controller="mainController"
+div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
+  .row: .small-12.columns.text-center
+    h1 Indiegogo Campaigns
+  .row: .small-12.medium-6.medium-centered.columns
+    input type="text" placeholder="Search"
   .row: .small-12.columns
-    input type="text"
-  div ng-repeat="campaign in campaigns"
-    | {{ campaign }}
+    div.campaign-card ng-repeat="campaign in campaigns" style="background-image: url({{ campaign.image_types.large }})"
+      | {{ campaign.title }}
