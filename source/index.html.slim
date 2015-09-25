@@ -13,4 +13,5 @@ div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
         img.thumbnail src="{{ campaign.baseball_card_image_url }}"
         .quick-info
           h5 = '{{ campaign.title }}'
-          | {{ campaign.title }}
+          p = '{{ campaign.tagline }}'
+          span = '{{ campaign.collected_funds | currency:"$":0 }}/{{ campaign.goal | currency:"$":0 }} Raised'
