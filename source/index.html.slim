@@ -9,7 +9,7 @@ div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
     input type="search" ng-model="searchText" placeholder="Search..."
   .row: .small-12.columns
     .campaigns
-      .campaign-card ng-repeat="campaign in campaigns | filter:searchFilter"
+      a.campaign-card ng-repeat="campaign in campaigns | filter:searchFilter" href="{{ campaign.web_url }}"
         img.thumbnail src="{{ campaign.baseball_card_image_url }}"
         .quick-info
           h5 = '{{ campaign.title }}'
