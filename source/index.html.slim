@@ -1,5 +1,5 @@
 ---
-title: Welcome to Middleman
+title: Indiegogo Campaigns
 ---
 
 div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
@@ -8,5 +8,9 @@ div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
   .row: .small-12.medium-6.medium-centered.columns
     input type="text" placeholder="Search"
   .row: .small-12.columns
-    div.campaign-card ng-repeat="campaign in campaigns" style="background-image: url({{ campaign.image_types.large }})"
-      | {{ campaign.title }}
+    .campaigns
+      .campaign-card ng-repeat="campaign in campaigns"
+        img.thumbnail src="{{ campaign.baseball_card_image_url }}"
+        .quick-info
+          h5 = '{{ campaign.title }}'
+          | {{ campaign.title }}

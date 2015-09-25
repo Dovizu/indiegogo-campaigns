@@ -3,10 +3,23 @@
 
 body {
   .app-wrapper {
-    .campaign-card {
-      height: 300px;
-      margin: 10px;
-      background: darkgray;
+    .campaigns {
+      justify-content: center;
+      display: flex;
+      flex-flow: row wrap;
+      .campaign-card {
+        height: 400px;
+        width: 220px;
+        margin: 10px;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        .thumbnail {
+          border-radius: 5px 5px 0 0;
+        }
+        .quick-info {
+          padding: 10px;
+        }
+      }
     }
   }
 }
