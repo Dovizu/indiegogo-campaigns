@@ -6,10 +6,10 @@ div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
   .row: .small-12.columns.text-center
     h1 Indiegogo Campaigns
   .row: .small-12.medium-6.medium-centered.columns
-    input type="text" placeholder="Search"
+    input type="search" ng-model="searchText" placeholder="Search..."
   .row: .small-12.columns
     .campaigns
-      .campaign-card ng-repeat="campaign in campaigns"
+      .campaign-card ng-repeat="campaign in campaigns | filter:searchFilter"
         img.thumbnail src="{{ campaign.baseball_card_image_url }}"
         .quick-info
           h5 = '{{ campaign.title }}'

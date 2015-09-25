@@ -13,6 +13,10 @@ angular.module('indiegogoCampaigns', [])
 }])
     .controller('mainController', ['$scope', 'campaignFactory', function($scope, campaignFactory) {
         $scope.campaigns = [];
+        $scope.searchFilter = function (obj) {
+            var re = new RegExp($scope.searchText, 'i');
+            return !$scope.searchText || re.test(obj.title) || re.test(obj.tagline);
+        };
 
         getCampaigns();
 
