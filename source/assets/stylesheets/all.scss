@@ -3,12 +3,12 @@
 @import "Hover";
 
 body {
-  input[type="search"] {
-    border-radius: 5px;
-  }
-
   .app-wrapper {
     margin: 40px 0;
+    input[type="search"] {
+      border-radius: 5px;
+      font-size: 20px;
+    }
     .campaigns {
       justify-content: center;
       display: flex;

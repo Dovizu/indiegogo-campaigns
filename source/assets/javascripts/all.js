@@ -22,6 +22,8 @@ angular.module('indiegogoCampaigns', [])
         };
 
         getCampaigns();
+        $scope.order('title', false);
+        $scope.sorted = 'title';
 
         function getCampaigns() {
             campaignFactory.getAllCampaigns()
