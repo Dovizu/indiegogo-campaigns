@@ -7,9 +7,13 @@ div.app-wrapper ng-app="indiegogoCampaigns" ng-controller="mainController"
     h1: b INDIEGOGO CAMPAIGNS
   .row: .small-12.medium-6.medium-centered.columns
     input type="search" ng-model="searchText" placeholder="Search..."
+    ul.button-group.round.text-center
+      li: a.small.button ng-class="{secondary: sorted!='title'}" href="" ng-click="order('title', false); sorted='title'" Title
+      li: a.small.button ng-class="{secondary: sorted!='date'}" href="" ng-click="order('created_at', true); sorted='date'" Date
+      li: a.small.button ng-class="{secondary: sorted!='progress'}" href="" ng-click="order('collected_funds/goal', true); sorted='progress'" Progress
   .row: .small-12.columns
     .campaigns
-      a.campaign-card.hvr-grow ng-repeat="campaign in campaigns | filter:searchFilter" href="{{ campaign.web_url }}" target="_blank"
+      a.campaign-card.hvr-grow ng-repeat="campaign in campaigns | filter:searchFilter | orderBy:''" href="{{ campaign.web_url }}" target="_blank"
         img.thumbnail src="{{ campaign.baseball_card_image_url }}"
         .quick-info
           span.pricing = '{{ campaign.collected_funds | currency:"$":0 }}/{{ campaign.goal | currency:"$":0 }} Raised'

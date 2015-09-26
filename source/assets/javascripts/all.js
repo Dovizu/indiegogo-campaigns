@@ -11,11 +11,14 @@ angular.module('indiegogoCampaigns', [])
     };
     return campaignFactory;
 }])
-    .controller('mainController', ['$scope', 'campaignFactory', function($scope, campaignFactory) {
+    .controller('mainController', ['$scope', 'campaignFactory', '$filter', function($scope, campaignFactory, $filter) {
         $scope.campaigns = [];
         $scope.searchFilter = function (obj) {
             var re = new RegExp($scope.searchText, 'i');
             return !$scope.searchText || re.test(obj.title) || re.test(obj.tagline);
+        };
+        $scope.order = function(predicate, reverse) {
+            $scope.campaigns = $filter('orderBy')($scope.campaigns, predicate, reverse);
         };
 
         getCampaigns();
