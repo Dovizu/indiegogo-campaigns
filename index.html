@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Indiegogo Campaigns</title>
+
+    <link href="/assets/stylesheets/all-ec037451.css" rel="stylesheet" />
+    <script src="/assets/javascripts/all-933f313d.js"></script>
+  </head>
+
+  <body class="index">
+    <div class="app-wrapper" ng-app="indiegogoCampaigns" ng-controller="mainController"><div class="row"><div class="small-12 columns text-center"><h1><b>INDIEGOGO CAMPAIGNS</b></h1></div></div><div class="row"><div class="small-12 medium-6 medium-centered columns"><input ng-model="searchText" placeholder="Search..." type="search" /><ul class="button-group round text-center"><li><a class="tiny button" href="" ng-class="{secondary: sorted!='title'}" ng-click="order('title', false); sorted='title'">Title</a></li><li><a class="tiny button" href="" ng-class="{secondary: sorted!='date'}" ng-click="order('created_at', true); sorted='date'">Date</a></li><li><a class="tiny button" href="" ng-class="{secondary: sorted!='progress'}" ng-click="order('collected_funds/goal', true); sorted='progress'">Progress</a></li></ul></div></div><div class="row"><div class="small-12 columns"><div class="campaigns"><a class="campaign-card hvr-grow" href="{{ campaign.web_url }}" ng-repeat="campaign in campaigns | filter:searchFilter | orderBy:''" target="_blank"><img class="thumbnail" src="{{ campaign.baseball_card_image_url }}" /><div class="quick-info"><span class="pricing">{{ campaign.collected_funds | currency:"$":0 }}/{{ campaign.goal | currency:"$":0 }} Raised</span><h4><b>{{ campaign.title }}</b></h4><p>{{ campaign.tagline }}</p></div></a></div></div></div><div class="row"><div class="small-12 columns text-center"><small>Made with ♥ by Donny Reynolds</small></div></div></div>
+  </body>
+</html>
